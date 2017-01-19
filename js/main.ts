@@ -80,7 +80,7 @@ function SetstationID( stName:string ):string {
     else if(stName == "麥寮"){stationID = "EPA101";}
     else if(stName == ""   ){stationID = "";}
     else                    {stationID = "Error";}
-
+    return stationID;
 }
 const rowNum:number = 27;
 let rowName:string[] = [
