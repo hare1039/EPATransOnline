@@ -1,5 +1,5 @@
-function SetstationID(stName) {
-    var stationID;
+function setStationID(stName) {
+    let stationID;
     if (stName == "基隆") {
         stationID = "EPA001";
     } //轉換站位名為編號，以利與GTx資料整合
@@ -237,9 +237,43 @@ function SetstationID(stName) {
     return stationID;
 }
 
-function convertor(input) {
-    var rowNum = 27;
-    var rowName = [
+function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
+}
+
+let rowNum = 27;
+let outFiles = "";
+function saveTable(table) {
+	for(let i=0; i<=23; i++) {
+		for(let j=0; j<rowNum; j++) {
+            if(!table[i][j])
+                table[i][j] = "";
+			outFiles = outFiles + table[i][j];
+			if(j == 26)
+                outFiles = outFiles + "\n";
+			else
+				outFiles = outFiles + ",";
+		}
+	}
+    outFiles + "\n"
+	for(let i=0; i<=23; i++) {
+		for(let j=0; j<rowNum; j++) {
+
+			table[i][j] = "";
+		}
+	}
+}
+
+function convertor(input_string) {
+    let rowName = [
         "Year",
         "Month",
         "Day",
@@ -269,7 +303,79 @@ function convertor(input) {
         "RAIN_COND"
     ];
 
-    
+    let table = createArray(24, rowNum); // table[][]
+    let year = "", month = "", date = "", station_name = "", station_ID = "";
+    let pre_year = "", pre_month = "", pre_date = "";
+    let HOT_FIX_FirstDay = true;
+
+
+    let lines = input_string.split("\n");
+
+    for(let i=1; i<lines.length; i++){
+        //$("ol").append($("</li>" + input_string + "<li>"));
+        let data = lines[i];
+        let c = 0;
+        let cell = "", pol = ""; // string
+        let start = 0, end = 0, polIndex = 0; // number
+
+        end = data.indexOf("/", start);//Year
+		year = data.substr(start, end-start);
+
+        start = end+1;
+        end = data.indexOf("/", start);//Month
+		month = data.substr(start, end-start);
+
+		start = end+1;
+		end = data.indexOf(",", start);//Date
+		date = data.substr(start, end-start);
+
+
+        if(year == "") {
+            break;
+        }
+
+        if(!HOT_FIX_FirstDay &&(year!=pre_year || month!=pre_month || date!=pre_date)){//換日後做輸出
+			saveTable(table);
+		}
+        pre_year = year;
+		pre_month = month;
+		pre_date = date;
+
+        start = end+1;
+        end = data.indexOf(",", start);//station_name
+		stationName = data.substr(start, end-start);
+        let station_ID = setStationID(stationName);
+
+        for(let i=0; i<=23; i++){
+			table[i][0] = year;
+			table[i][1] = month;
+			table[i][2] = date;
+			table[i][3] = i.toString();
+			table[i][4] = station_name;
+			table[i][5] = station_ID;
+		}
+
+        start = end+1;
+		end = data.indexOf(",", start);//測項
+		pol = data.substr(start, end-start);
+
+        for(let i=6; i<=26; i++){
+			if(pol == rowName[i]){
+				polIndex = i;//測項的橫軸座標
+				break;
+			}
+		}
+        for(let i=0; i<23; i++){
+			start = end+1;
+			end = data.indexOf(",", start);
+			table[i][polIndex] = data.substr(start, end-start);
+		}
+        start = end+1;
+		table[23][polIndex] = data.substr(start, data.length - start + 1);
+        HOT_FIX_FirstDay = false;
+    }
+    saveTable(table);
+    return outFiles;
 }
 
 
@@ -280,8 +386,9 @@ function main() {
         var reader = new FileReader();
         reader.onload = function(){
             var text = reader.result;
-            $("ol").append($("</li>" + text + "<li>"));
-            console.log(text);
+            let out = convertor(text);
+            $("#download_list").append($("<a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='out.csv'>Download</a>"));
+            outFiles = "";
         };
         reader.readAsText(f);
     });
