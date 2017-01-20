@@ -380,17 +380,28 @@ function convertor(input_string) {
 
 
 function main() {
-    $("#send_button").on("click", function () {
+    $(".send_button").on("click", function () {
         var f = $("#input_file").get(0).files[0];
 
         var reader = new FileReader();
         reader.onload = function(){
             var text = reader.result;
             let out = convertor(text);
-            $("#download_list").append($("<a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='out.csv'>Download</a>"));
+            $("#download_list").append($("<li class='download_item'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='out.csv'>Download</a></li>"));
             outFiles = "";
         };
         reader.readAsText(f);
+    });
+
+    $(".send_button").mouseenter(function(){
+        $(this).animate({
+            backgroundColor: "rgb(247, 127, 17)"
+        }, 300);
+    });
+    $(".send_button").mouseleave(function(){
+        $(this).animate({
+            backgroundColor: "rgb(82, 255, 0)"
+        }, 300);
     });
 }
 

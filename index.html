@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>EPATransOnline</title>
-    <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="/css/stl.css">
+    <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
   </head>
   <body>
-    <input type="file" id="input_file"/>
-    <button id="send_button" type="button" name="button"> send! </button>
-    <div id="download_list">
-        
+    <p> EPATransOnline: 一個 csv 分析器 </p>
+    <div >
+      <div class="main_part">
+        <input type="file" id="input_file"/>
+      </div>
+      <div class="send_button main_part" >
+        analise!
+      </div>
+      <ol class="main_part" id="download_list">
+      </ol>
     </div>
 
   </body>

@@ -1,0 +1,32 @@
+body {
+    background-color: rgba(205, 193, 26, 0.2);
+}
+
+p {
+    font-family: 'Ruda', sans-serif;
+    height: 40px;
+    font-size: 200%;
+    background-color: rgb(141, 185, 244);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.send_button {
+    border-radius: 5px;
+    font-family: 'Ruda', sans-serif;
+    font-size: 200%;
+    background-color: rgb(82, 255, 0);
+}
+
+.download_item {
+    width: 200px;
+    height: 40px;
+    margin: 0px auto;
+}
+
+.main_part {
+    text-align: center;
+    width: 400px;
+    height: 40px;
+    margin: 0px auto;
+}
