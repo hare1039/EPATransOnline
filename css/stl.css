@@ -11,6 +11,15 @@ p {
     text-align: center;
 }
 
+.description {
+    font-family: 'Ruda', sans-serif;
+    height: 60px;
+    font-size: 150%;
+    background-color: rgb(141, 185, 244);
+    border-radius: 5px;
+    text-align: center;
+}
+
 .send_button {
     border-radius: 5px;
     font-family: 'Ruda', sans-serif;
