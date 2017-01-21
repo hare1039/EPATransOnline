@@ -13,14 +13,6 @@ p {
 .title{
   text-align: center;
 }
-.description {
-    font-family: 'Ruda', sans-serif;
-    height: 100px;
-    font-size: 150%;
-    background-color: rgb(141, 185, 244);
-    border-radius: 5px;
-    text-align: center;
-}
 
 .send_button {
     border-radius: 5px;
@@ -40,4 +32,13 @@ p {
     width: 400px;
     height: 40px;
     margin: 0px auto;
+}
+
+.description {
+    font-family: 'Ruda', sans-serif;
+    height: 100px;
+    font-size: 150%;
+    background-color: grey;
+    /*background-color: rgb(141, 185, 244);*/
+    text-align: center;
 }

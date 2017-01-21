@@ -399,7 +399,7 @@ function main() {
         reader.readAsText(f);
     });
 
-    $(".send_button").mouseenter(function(){
+   $(".send_button").mouseenter(function(){
         $(this).animate({
             backgroundColor: "rgb(247, 127, 17)"
         }, 300);
