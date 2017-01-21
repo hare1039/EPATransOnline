@@ -245,7 +245,6 @@ function createArray(length) {
         var args = Array.prototype.slice.call(arguments, 1);
         while(i--) arr[length-1 - i] = createArray.apply(this, args);
     }
-
     return arr;
 }
 
@@ -256,23 +255,22 @@ function saveTable(table) {
 		for(let j=0; j<rowNum; j++) {
             if(!table[i][j])
                 table[i][j] = "";
-			outFiles = outFiles + table[i][j];
+			outFiles += table[i][j];
 			if(j == 26)
-                outFiles = outFiles + "\n";
+                outFiles += "\n";
 			else
-				outFiles = outFiles + ",";
+				outFiles += ",";
 		}
 	}
-    outFiles + "\n"
 	for(let i=0; i<=23; i++) {
 		for(let j=0; j<rowNum; j++) {
-
 			table[i][j] = "";
 		}
 	}
 }
 
 function convertor(input_string) {
+    var regexp_clean_CRLF = new RegExp("\r\n", "g");
     let rowName = [
         "Year",
         "Month",
@@ -302,17 +300,24 @@ function convertor(input_string) {
         "PH_RAIN",
         "RAIN_COND"
     ];
+    for(let i=0; i<rowNum; i++) {                       //印第一列的欄位名迴圈 {
+		outFiles += rowName[i].replace(regexp_clean_CRLF, "");
+        //console.log("< " + rowName[i].replace("\r\n", "").replace("\n", "").replace("\r", "") + " >\n");
+		if(i == (rowNum-1)) {
+            outFiles += "\n";
+        } else {
+            outFiles += ",";
+        }     //換行或換欄判斷工作式
+	}
 
     let table = createArray(24, rowNum); // table[][]
-    let year = "", month = "", date = "", station_name = "", station_ID = "";
+    let year = "", month = "", date = "", stationName = "", station_ID = "";
     let pre_year = "", pre_month = "", pre_date = "";
     let HOT_FIX_FirstDay = true;
-
 
     let lines = input_string.split("\n");
 
     for(let i=1; i<lines.length; i++){
-        //$("ol").append($("</li>" + input_string + "<li>"));
         let data = lines[i];
         let c = 0;
         let cell = "", pol = ""; // string
@@ -351,7 +356,7 @@ function convertor(input_string) {
 			table[i][1] = month;
 			table[i][2] = date;
 			table[i][3] = i.toString();
-			table[i][4] = station_name;
+			table[i][4] = stationName;
 			table[i][5] = station_ID;
 		}
 
@@ -387,7 +392,8 @@ function main() {
         reader.onload = function(){
             var text = reader.result;
             let out = convertor(text);
-            $("#download_list").append($("<li class='download_item'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='out.csv'>Download</a></li>"));
+            out = out.replace("\n", "\r\n");
+            $("#download_list").append($("<li class='download_item'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='" +f.name.replace(".csv", "")+ "_out.csv'>Download</a></li>"));
             outFiles = "";
         };
         reader.readAsText(f);
