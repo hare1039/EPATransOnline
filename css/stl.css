@@ -10,7 +10,9 @@ p {
     border-radius: 5px;
     text-align: center;
 }
-
+.title{
+  text-align: center;
+}
 .description {
     font-family: 'Ruda', sans-serif;
     height: 100px;
