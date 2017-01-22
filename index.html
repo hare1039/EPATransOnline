@@ -11,22 +11,24 @@
     <script src="js/main.js" charset="utf-8"></script>
   </head>
   <body>
-    <div class="title"> EPATransOnline: 一個 csv 分析器 </div>
+    <div class ="container">
+      <div class="title"> 環保署空氣品質測站的資料轉置程式線上版 </div>
+      <div class="title"> EPATransOnline－Beta</div>
 
-        <div class="description"> Port from Friends of NEHS@TCSP <br/>
-          <a href="https://myspace.nchu.edu.tw/navigate/s/95882F6203E342BA9E86C6EAE3580C309QY">original link</a>
-          <a href="https://github.com/hare1039/EPATransOnline">this repo</a>
+
+      <div class="main_part">
+        <div>Please make sure file charset=UTF8.</div>
+          <input type="file" id="input_file"/>
+        <div class="send_button" >
+          analise!
         </div>
-    <div class="main_part">
-
-      <div>Please make sure file charset=UTF8.</div>
-        <input type="file" id="input_file"/>
-      <div class="send_button" >
-        analise!
+        <ol id="download_list">
+        </ol>
       </div>
-      <ol id="download_list">
-      </ol>
+      <div class="footer"> Port from Friends of NEHS@TCSP <br/>
+        <a href="https://myspace.nchu.edu.tw/navigate/s/95882F6203E342BA9E86C6EAE3580C309QY">original link</a>
+        <a href="https://github.com/hare1039/EPATransOnline">this repo</a>
+      </div>
     </div>
-
   </body>
 </html>
