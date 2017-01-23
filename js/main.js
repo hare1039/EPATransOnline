@@ -415,6 +415,17 @@ function main() {
             color:'rgb(46, 255, 61)'
         }, 300);
     });
+
+    $("img").mouseenter(function(){
+        $(this).animate({
+            width: "140px",
+        }, 300);
+    });
+    $("img").mouseleave(function(){
+        $(this).animate({
+            width: "90px",
+        }, 300);
+    });
 }
 
 
