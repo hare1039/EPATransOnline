@@ -385,15 +385,19 @@ function convertor(input_string) {
 
 
 function main() {
+    var download_item_index = 0;
     $(".send_button").on("click", function () {
         var f = $("#input_file").get(0).files[0];
-
         var reader = new FileReader();
         reader.onload = function(){
             var text = reader.result;
             let out = convertor(text);
-            out = out.replace("\n", "\r\n");
-            $("#download_list").append($("<li class='download_item'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) + "' download='" +f.name.replace(".csv", "")+ "_out.csv'>Download</a></li>"));
+
+            $("#download_list").append($("<li class='download_item' id='download_item_index"+ download_item_index +"'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) +
+              "' download='" +f.name.replace(".csv", "")+ "_out.csv'>Download</a></li>"));
+            $("#download_item_index" + download_item_index).hide();
+            $("#download_item_index" + download_item_index).slideDown("slow");
+            download_item_index++;
             outFiles = "";
         };
         reader.readAsText(f);
