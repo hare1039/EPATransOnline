@@ -8,25 +8,45 @@ html{
   box-sizing: inherit;
 }
 body {
-    background-color: rgba(205, 193, 26, 0.2);
+    background-color: rgb(207, 207, 207);
     margin: 0;
-    padding: 0;
+    padding: 5% 5% 0 5%;
     height: 100%;
 }
 .container{
-  height: 100%;
-  position: relative;
+  text-align: center;
+  width: 100%;
+  padding: 0;
 
+}
+.head{
+  background: rgb(46, 255, 61);
+  color: white;
 }
 .title{
+  display: inline-block;
+  font-size: 1.5em;
   text-align: center;
 }
-
+.title-small{
+  display: inline-block;
+  font-size: 1em;
+  text-align: center;
+}
+#input_file{
+  background: rgb(245, 245, 245);
+  border: solid 1px rgb(47, 186, 169);
+  border-radius: 5px;
+}
 .send_button {
+  display: inline-block;
+  margin: 20px 20px 20px 20px;
+  padding: 2px 10px 2px 10px;
     border-radius: 5px;
     font-family: 'Ruda', sans-serif;
     font-size: 200%;
-    background-color: rgb(82, 255, 0);
+    border: solid 2px rgb(46, 255, 61);
+    color: rgb(46, 255, 61);
 }
 
 .download_item {
@@ -37,17 +57,20 @@ body {
 
 .main_part {
     text-align: center;
-    width: 600px;
-    min-height: 200px;
+    width: 100%;
+    max-width: 600px;
+    min-height: 300px;
     margin: 0px auto;
-    background-color: rgb(141, 185, 244);
-    border-radius: 5px;
+    background-color: rgb(255,255,255);
+    border: solid 1px rgb(255,255,255);
 }
-
+.main_part p{
+  font-size: 0.9em;
+}
 .footer {
+    margin-top: 20px;
     font-family: 'Ruda', sans-serif;
     width: 100%;
-    height: 100px;
-    font-size: 50%;
+    font-size: 0.7em;
     text-align: center;
 }

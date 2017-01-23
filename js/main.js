@@ -401,12 +401,14 @@ function main() {
 
    $(".send_button").mouseenter(function(){
         $(this).animate({
-            backgroundColor: "rgb(247, 127, 17)"
+            backgroundColor: 'rgb(46, 255, 61)',
+            color:'rgb(255, 255, 255)'
         }, 300);
     });
     $(".send_button").mouseleave(function(){
         $(this).animate({
-            backgroundColor: "rgb(82, 255, 0)"
+            backgroundColor: 'rgb(255,255,255)',
+            color:'rgb(46, 255, 61)'
         }, 300);
     });
 }
