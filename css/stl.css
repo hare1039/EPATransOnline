@@ -65,8 +65,18 @@ body {
     border: solid 1px rgb(255,255,255);
 }
 .main_part p{
-  font-size: 0.9em;
+    font-size: 0.9em;
 }
+
+.link_size {
+    height: 90px;
+    width: 90px;
+}
+
+.link_access {
+
+}
+
 .footer {
     margin-top: 20px;
     font-family: 'Ruda', sans-serif;
