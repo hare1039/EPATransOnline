@@ -393,8 +393,12 @@ function main() {
             var text = reader.result;
             let out = convertor(text);
 
-            $("#download_list").append($("<li class='download_item' id='download_item_index"+ download_item_index +"'><a href='data:text/csv;charset=utf-8," + encodeURIComponent(out) +
-              "' download='" +f.name.replace(".csv", "")+ "_out.csv'>Download</a></li>"));
+            $("#download_list").append($("<div class='download_item' id='download_item_index"+ download_item_index +"'>Output</div><br/>"));
+            $("#download_item_index" + download_item_index).on("click",function(){
+              window.location = "data:text/csv;charset=utf-8," + encodeURIComponent(out) +
+                "' download='" +f.name.replace(".csv", "")+ "_out.csv";
+            });
+            $("#download_item_index" + download_item_index).append('_'+(download_item_index+1));
             $("#download_item_index" + download_item_index).hide();
             $("#download_item_index" + download_item_index).slideDown("slow");
             download_item_index++;
@@ -405,25 +409,25 @@ function main() {
 
    $(".send_button").mouseenter(function(){
         $(this).animate({
-            backgroundColor: 'rgb(46, 255, 61)',
+            backgroundColor: 'rgb(255, 146, 46)',
             color:'rgb(255, 255, 255)'
         }, 300);
     });
     $(".send_button").mouseleave(function(){
         $(this).animate({
             backgroundColor: 'rgb(255,255,255)',
-            color:'rgb(46, 255, 61)'
+            color:'rgb(255, 146, 46)'
         }, 300);
     });
 
     $("img").mouseenter(function(){
         $(this).animate({
-            width: "140px",
+            width: "100px",height: "100px"
         }, 300);
     });
     $("img").mouseleave(function(){
         $(this).animate({
-            width: "90px",
+            width: "50px",height: "50px"
         }, 300);
     });
 }
