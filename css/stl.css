@@ -16,10 +16,13 @@ body {
 .container{
   text-align: center;
   width: 100%;
+  max-width: 600px;
   padding: 0;
+  margin: 0 auto;
 
 }
 .head{
+  padding: 5% 5% 5% 5%;
   background: rgb(46, 255, 61);
   color: white;
 }
@@ -56,11 +59,10 @@ body {
 }
 
 .main_part {
+  padding: 1% 5% 5% 5%;
     text-align: center;
     width: 100%;
-    max-width: 600px;
     min-height: 300px;
-    margin: 0px auto;
     background-color: rgb(255,255,255);
     border: solid 1px rgb(255,255,255);
 }
