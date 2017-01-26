@@ -410,13 +410,15 @@ function main() {
    $(".send_button").mouseenter(function(){
         $(this).animate({
             backgroundColor: 'rgb(255, 146, 46)',
+            borderColor:'rgb(255, 146, 46)',
             color:'rgb(255, 255, 255)'
         }, 300);
     });
     $(".send_button").mouseleave(function(){
         $(this).animate({
-            backgroundColor: 'rgb(255,255,255)',
-            color:'rgb(255, 146, 46)'
+            backgroundColor: 'rgb(240, 240, 240)',
+            borderColor:'#8BC34A',
+            color:'#8BC34A'
         }, 300);
     });
 
